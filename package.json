@@ -5,10 +5,10 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon",
-    "postinstall": "tsc && mv -i -v public dist/ && rm -v -rf src",
-    "watch-node": "nodemon dist/index.js",
-    "watch-ts": "tsc -w",
-    "deploy": "git add . && git commit -m Heroku && git push heroku master"
+    "postinstall": "tsc",
+    "build": "tsc",
+    "dev": "NODE_ENV=development tsc-watch --project . --outDir ./dist --onSuccess \"nodemon ./dist/index.js --inspect=5858\"",
+    "deploy": "git push heroku main"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
