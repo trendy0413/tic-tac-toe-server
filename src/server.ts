@@ -8,6 +8,7 @@ import "reflect-metadata";
 import app from "./app";
 var debug = require("debug")("socketio-server:server");
 import * as http from "http";
+import * as cors from "cors";
 import socketServer from "./socket";
 
 /**
@@ -16,7 +17,7 @@ import socketServer from "./socket";
 
 var port = normalizePort(process.env.PORT || "9000");
 app.set("port", port);
-
+app.use(cors());
 /**
  * Create HTTP server.
  */
