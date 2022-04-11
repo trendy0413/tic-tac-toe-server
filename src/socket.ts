@@ -4,7 +4,9 @@ import { Server } from "socket.io";
 export default (httpServer) => {
   const io = new Server(httpServer, {
     cors: {
-      origin: "*",
+      origin: ['http://localhost:3000/', 'https://tictactoe.pavanaditya.com'],
+      allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'Accept', 'Access-Control-Allow-Origin'],
+      credentials: true
     },
   });
 
