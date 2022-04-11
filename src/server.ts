@@ -16,6 +16,11 @@ import socketServer from "./socket";
 
 var port = normalizePort(process.env.PORT || "9000");
 app.set("port", port);
+app.use(function (request, response, next) {
+  response.header("Access-Control-Allow-Origin", "*");
+  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 /**
  * Create HTTP server.
  */
@@ -28,9 +33,9 @@ var server = http.createServer(app);
 
 const io = socketServer(server);
 
-io.listen(port);
-io.on("error", onError);
-io.on("listening", onListening);
+server.listen(port);
+server.on("error", onError);
+server.on("listening", onListening);
 
 
 /**
