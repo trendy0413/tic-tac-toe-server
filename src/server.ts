@@ -30,9 +30,9 @@ var server = http.createServer(app);
 
 const io = socketServer(server);
 
-server.listen(port);
-server.on("error", onError);
-server.on("listening", onListening);
+io.listen(port);
+io.on("error", onError);
+io.on("listening", onListening);
 
 
 /**
